@@ -1,0 +1,155 @@
+body{ font-family: -apple-system-font,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin: 0;background-color: #ededed;}
+#app{
+    margin: 0 auto;
+    width: 6rem;
+}
+/*头部logo*/
+header {
+    width: 600%;
+    height: 2.6rem;
+    max-width: 6rem;
+    background: url("../img/title.png") no-repeat;
+    background-size: 100% 145%;
+}
+/*列表内容*/
+.content{
+    width: 6rem;
+    overflow: hidden;
+    position: relative;
+}
+.out{
+    width: 25rem;
+    overflow: hidden;
+}
+ul{
+    float: left;
+    width: 6rem;
+    margin: 0;
+    padding:0;
+    zoom: 1;
+    position: relative;
+    top:0;
+    left: 0;
+    /*transition: left 1s ease;*/
+    transform: translateX(0);
+    transition:transform 0.5s linear;
+}
+ul:after{
+    content: "";
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+ul li{
+    height: 1.6rem;
+    margin-top: 0.1rem;
+    padding-bottom: 0.05rem;
+    list-style: none;
+    background-color: #fff;
+}
+ul li .box{
+    width: 90%;
+    height: 100%;
+    margin: 0.1rem auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    zoom: 1;
+}
+ul li .box:after{
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+/*每块内容的标题*/
+h4{
+    height: 0.5rem;
+    line-height: 0.5rem;
+    font-size: 0.28rem;
+    font-weight: 400;
+    margin:0;
+    width: 100%;
+}
+/*缩略图*/
+.img_show{
+    width: 1.2rem;
+    height: 1rem;
+    float: left;
+    zoom: 1;
+}
+.img_show:after{
+    content:"";
+    height:0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+.img_show img{
+    width: 100%;
+    height: 100%;
+}
+/*简单描述区*/
+.text{
+    margin: 0.24rem 0 0.08rem 0.15rem;
+    width: 3.4rem;
+    font-size:0.22rem;
+    float: left;
+    color: #666;
+}
+.text a{
+    display: block;
+    text-decoration: none;
+    zoom:1;
+}
+.text a:after{
+    content:"";
+    height:0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+}
+/*箭头符号*/
+.arrow{
+    display: inline-block;
+    float: right;
+    width: 0.3rem;
+    height: 0.3rem;
+    margin-top: 0.28rem;
+}
+.fa{
+    color: #666666;
+    font-size: 0.32rem;
+}
+/*底下的4个圆圈*/
+section {
+    width: 2.4rem;
+    height: 0.2rem;
+    margin: 0 auto;
+}
+section .icon {
+    width:100%;
+    margin: 0 auto;
+    height: 100%;
+}
+section .icon i{
+    display: inline-block;
+    width: 0.2rem;
+    height: 100%;
+    /*margin: 0 0.2rem 0 0.1rem;*/
+    margin: 0.1rem 0.25rem 0 0.25rem;
+    border-radius:100%;
+    border: 1px solid #99CCFF;
+    box-sizing: border-box;
+    background-color: #99CCFF;
+}
+
+/*当前页底部圆圈的样式*/
+.select{
+    background-color: #666699!important;
+}
+
+
+
+

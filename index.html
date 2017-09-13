@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-if="http://www.w3.org/1999/xhtml" xmlns:v-cloak="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>衡道医学病理直播课</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/page.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main id="app">
+        <header>
+            <video></video>
+        </header>
+        <div class="content" id="page__bd" v-cloak>
+            <div class="out">
+                <div class="info">
+                    <ul>
+                        <li v-for="(item,index) in content" v-bind:id="'list'+index" v-if="(item.No<4)">
+                            <div class="box">
+                                <h4>{{item.date}} {{item.title}}</h4>
+                                <div class="img_show">
+                                    <img v-bind:src="item.img_src" alt="illness">
+                                </div>
+                                <a >
+                                    <p class="text">{{item.page}}</p>
+                                    <span class="arrow fa fa-angle-double-right"></span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li v-for="(item,index) in content" v-bind:id="'list'+index" v-if="(item.No>=4)&(item.No<8)">
+                            <div class="box">
+                                <h4>{{item.date}} {{item.title}}</h4>
+                                <div class="img_show">
+                                    <img v-bind:src="item.img_src" alt="illness">
+                                </div>
+                                <a >
+                                    <p class="text">{{item.page}}</p>
+                                        <span class="arrow fa fa-angle-double-right"></span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li v-for="(item,index) in content" v-bind:id="'list'+index" v-if="(item.No>=8)&(item.No<12)">
+                            <div class="box">
+                                <h4>{{item.date}} {{item.title}}</h4>
+                                <div class="img_show">
+                                    <img v-bind:src="item.img_src" alt="illness">
+                                </div>
+                                <a >
+                                    <p class="text">{{item.page}}</p>
+                                    <span class="arrow"></span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!--<ul>-->
+                        <!--<li v-for="(item,index) in content" v-bind:id="'list'+index" v-if="(item.No>=9)&(item.No<12)">-->
+                            <!--<div class="box">-->
+                                <!--<h4>{{item.date}} {{item.title}}</h4>-->
+                                <!--<div class="img_show">-->
+                                    <!--<img v-bind:src="item.img_src" alt="illness">-->
+                                <!--</div>-->
+                                <!--<a v-bind:href="item.src">-->
+                                    <!--<p class="text">{{item.page}}</p>-->
+                                    <!--<div class="b_arrow">-->
+                                        <!--<span class="arrow"></span>-->
+                                    <!--</div>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="icon" id="change">
+                <i v-on:click="select(1)" v-bind:class="{'select':flag==1}"></i>
+                <i v-on:click="select(2)" v-bind:class="{'select':flag==2}"></i>
+                <i v-on:click="select(3)" v-bind:class="{'select':flag==3}"></i>
+                <!--<i v-on:click="select(4);getNum(12)" v-bind:class="{'select':flag==4}"></i>-->
+            </div>
+        </section>
+    </main>
+</body>
+<script src="./js/jquery-1.8.3.js"></script>
+<!--JS引入rem布局-->
+<script src="./js/rem.js"></script>
+<script src="./js/vue/dist/vue.min.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/slide.js"></script>
+</html>

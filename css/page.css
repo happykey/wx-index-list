@@ -1,4 +1,8 @@
-body{ font-family: -apple-system-font,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin: 0;background-color: #ededed;}
+body{ font-family: -apple-system-font,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;margin: 0;background-color: #fff!important;}
+a{
+    list-style: none;
+    display: inline-block;
+}
 #app{
     margin: 0 auto;
     width: 6rem;
@@ -6,15 +10,23 @@ body{ font-family: -apple-system-font,"Helvetica Neue","PingFang SC","Hiragino S
 /*头部logo*/
 header {
     width: 600%;
-    height: 2.6rem;
+    height: 3.3rem;
     max-width: 6rem;
     border-radius: 3px;
-    background: url("../img/title.png") no-repeat;
+    background: url("../img/poster.jpeg") no-repeat;
     background-size: 100% 145%;
 }
+#demo-video{
+    width: 100%;
+    height: 100%;
+}
 /*列表内容*/
-.content{
+.part{
+    height: 6.5rem;
+}
+.content_0{
     width: 6rem;
+    height: 6.3rem;
     overflow: hidden;
     position: relative;
 }
@@ -22,7 +34,7 @@ header {
     width: 25rem;
     overflow: hidden;
 }
-ul{
+.info ul{
     float: left;
     width: 6rem;
     height: 7.1rem;
@@ -36,16 +48,16 @@ ul{
     transition:transform 0.5s linear;
     zoom: 1;
 }
-ul:after{
+.info ul:after{
     content: "";
     height: 0;
     display: block;
     visibility: hidden;
     clear: both;
 }
-ul li {
-    height: 1.6rem;
-    margin-top: 0.1rem;
+.info ul li {
+    height: 1.8rem;
+    margin-top: 0.2rem;
     padding-bottom: 0.05rem;
     list-style: none;
     border-radius: 6px;
@@ -53,7 +65,7 @@ ul li {
     /*border-bottom: 2px solid #ccc;*/
     box-shadow: 0px 1px 2px #888;
 }
-ul li .box{
+.info ul li .box{
     width: 90%;
     height: 100%;
     margin: 0.1rem auto;
@@ -61,7 +73,10 @@ ul li .box{
     overflow: hidden;
     zoom: 1;
 }
-ul li .box:after{
+.info ul .box a:hover{
+    cursor: pointer;
+}
+.info ul li .box:after{
     content: "";
     display: block;
     height: 0;
@@ -69,47 +84,66 @@ ul li .box:after{
     clear: both;
 }
 /*每块内容的标题*/
-h4{
+.box h4{
     height: 0.5rem;
     line-height: 0.5rem;
     font-size: 0.28rem;
     font-weight: 400;
-    margin:0;
+    margin:0.05rem 0 0 0;
     width: 100%;
 }
 /*缩略图*/
-.img_show{
+.box .img_show{
     width: 1.2rem;
     height: 1rem;
+    position: relative;
     float: left;
+    opacity: 1;
     zoom: 1;
 }
-.img_show:after{
+.box .img_show div{
+    width: 0.72rem;
+    height: 0.8rem;
+    margin: 0.1rem 0 0 0.22rem;
+    /*background: url("../img/play.png") no-repeat -1.65rem center;*/
+    background-size: 4rem 2rem ;
+    opacity: 0.4;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.img_play{
+    background: url("../img/play.png") no-repeat -1.64rem center;
+}
+.img_stop{
+    background: url("../img/play.png") no-repeat -0.02rem center;
+}
+.box .img_show:after{
     content:"";
     height:0;
     visibility: hidden;
     display: block;
     clear: both;
 }
-.img_show img{
+.box .img_show img{
     width: 100%;
     height: 100%;
 }
 /*简单描述区*/
-.text{
+.box .text{
     margin: 0.24rem 0 0.08rem 0.15rem;
     width: 3.4rem;
     font-size:0.22rem;
     float: left;
     color: #666;
 }
-.text a{
+.box .text a{
     display: block;
     text-decoration: none;
     box-sizing: border-box;
 }
 /*箭头符号*/
-.arrow{
+.box .arrow{
     display: inline-block;
     float: right;
     width: 0.3rem;
@@ -117,20 +151,20 @@ h4{
     margin-top: 0.28rem;
     zoom: 1;
 }
-.arrow:after{
+.box .arrow:after{
     content:"";
     height:0;
     visibility: hidden;
     display: block;
     clear: both;
 }
-.fa{
-    color: #666666;
-    font-size: 0.32rem;
+.box .fa{
+    color: #ccc;
+    font-size: 0.32rem!important;
 }
 /*底下的4个圆圈*/
 section {
-    width: 2.4rem;
+    width: 3rem;
     height: 0.2rem;
     margin: 0 auto;
 }
@@ -143,18 +177,27 @@ section .icon i{
     display: inline-block;
     width: 0.2rem;
     height: 100%;
-    margin: 0.1rem 0.25rem 0 0.25rem;
+    margin: 0.1rem 0.21rem 0 0.25rem;
     border-radius:100%;
     border: 1px solid #99CCFF;
     box-sizing: border-box;
-    background-color: #99CCFF;
 }
 
 /*当前页底部圆圈的样式*/
 .select{
     background-color: #666699!important;
 }
+/*滚动时，视频界面固定在头部*/
+.head-fix-top{
+    position: fixed;
+    z-index: 99;
+}
+.intro-relative{
+    position: relative;
+    top:3.65rem;
+}
 
-
-
-
+/*视频播放*/
+.video_play{
+    display: none!important;
+}

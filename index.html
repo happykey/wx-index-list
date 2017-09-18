@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/page.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://player.qiniucc.com/sdk/latest/qiniuplayer.min.css" rel="stylesheet">
+
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <style>
         [v-cloak]{
             display: none;
@@ -16,89 +22,143 @@
 <body>
     <main id="app">
         <header>
-            <video></video>
+            <video id="demo-video" class="video_play video-js vjs-big-play-centered"></video>
         </header>
-        <div class="content" id="page__bd" v-cloak>
-            <div class="out">
-                <div class="info">
-                    <ul>
-                        <li v-for="(item,index) in content" v-bind:id="'list'+index" v-if="(item.No<4)">
-                            <div class="box">
-                                <h4>{{item.date}} {{item.title}}</h4>
-                                <div class="img_show">
-                                    <img v-bind:src="item.img_src" alt="illness">
-                                </div>
-                                <a >
-                                    <p class="text">{{item.page}}</p>
-                                    <span class="arrow fa fa-angle-double-down"></span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul>
-                        <li v-for="(item,index) in content" v-bind:id="'list'+index" v-if="(item.No>=4)&(item.No<8)">
-                            <div class="box">
-                                <h4>{{item.date}} {{item.title}}</h4>
-                                <div class="img_show">
-                                    <img v-bind:src="item.img_src" alt="illness">
-                                </div>
-                                <a >
-                                    <p class="text">{{item.page}}</p>
+        <div class="part"><!--用类part将列表和底部选择圈包裹，方便indexJS中淡入淡出-->
+            <div class="content_0" id="page__bd" v-cloak>
+                <div class="out">
+                    <div class="info">
+                        <ul>
+                            <li v-for="(item,index) in content" v-bind:id="index" v-if="(item.No<3)">
+                                <div class="box">
+                                    <h4>{{item.date}} {{item.title}}</h4>
+                                    <div class="img_show" >
+                                        <img v-bind:src="item.img_src" alt="illness" >
+                                        <a v-bind:href="item.src" class="video">
+                                            <div class="img_play"></div>
+                                        </a>
+                                    </div>
+                                    <a v-on:click="getDetail(index)">
+                                        <p class="text">{{item.page}}</p>
                                         <span class="arrow fa fa-angle-double-down"></span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul>
-                        <li v-for="(item,index) in content" v-bind:id="'list'+index" v-if="(item.No>=8)&(item.No<12)">
-                            <div class="box">
-                                <h4>{{item.date}} {{item.title}}</h4>
-                                <div class="img_show">
-                                    <img v-bind:src="item.img_src" alt="illness">
+                                    </a>
                                 </div>
-                                <a >
-                                    <p class="text">{{item.page}}</p>
-                                    <span class="arrow fa fa-angle-double-down"></span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
 
-                    <!--<ul>-->
-                        <!--<li v-for="(item,index) in content" v-bind:id="'list'+index" v-if="(item.No>=9)&(item.No<12)">-->
-                            <!--<div class="box">-->
-                                <!--<h4>{{item.date}} {{item.title}}</h4>-->
-                                <!--<div class="img_show">-->
-                                    <!--<img v-bind:src="item.img_src" alt="illness">-->
-                                <!--</div>-->
-                                <!--<a v-bind:href="item.src">-->
-                                    <!--<p class="text">{{item.page}}</p>-->
-                                    <!--<div class="b_arrow">-->
-                                        <!--<span class="arrow"></span>-->
-                                    <!--</div>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</li>-->
-                    <!--</ul>-->
+                        <ul>
+                            <li v-for="(item,index) in content" v-bind:id="index" v-if="(item.No>=3)&(item.No<6)">
+                                <div class="box">
+                                    <h4>{{item.date}} {{item.title}}</h4>
+                                    <div class="img_show" v-on:click="playVedio(index)">
+                                        <img v-bind:src="item.img_src" alt="illness">
+                                        <div class="img_play"></div>
+                                    </div>
+                                    <a v-on:click="getDetail(index)">
+                                        <p class="text">{{item.page}}</p>
+                                        <span class="arrow fa fa-angle-double-down"></span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul>
+                            <li v-for="(item,index) in content" v-bind:id="index" v-if="(item.No>=6)&(item.No<9)">
+                                <div class="box">
+                                    <h4>{{item.date}} {{item.title}}</h4>
+                                    <div class="img_show" v-on:click="playVedio(index)">
+                                        <img v-bind:src="item.img_src" alt="illness">
+                                        <div class="img_play"></div>
+                                    </div>
+                                    <a v-on:click="getDetail(index)">
+                                        <p class="text">{{item.page}}</p>
+                                        <span class="arrow fa fa-angle-double-down"></span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul>
+                            <li v-for="(item,index) in content" v-bind:id="index" v-if="(item.No>=9)&(item.No<12)">
+                                <div class="box">
+                                    <h4>{{item.date}} {{item.title}}</h4>
+                                    <div class="img_show" v-on:click="playVedio(index)">
+                                        <img v-bind:src="item.img_src" alt="illness">
+                                        <div class="img_play"></div>
+                                    </div>
+                                    <a v-on:click="getDetail(index)">
+                                        <p class="text">{{item.page}}</p>
+                                        <span class="arrow fa fa-angle-double-down"></span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <section>
+                <div class="icon" id="change">
+                    <i v-on:click="select(1)" v-bind:class="{'select':flag==1}"></i>
+                    <i v-on:click="select(2)" v-bind:class="{'select':flag==2}"></i>
+                    <i v-on:click="select(3)" v-bind:class="{'select':flag==3}"></i>
+                    <i v-on:click="select(4)" v-bind:class="{'select':flag==4}"></i>
+                </div>
+            </section>
         </div>
-        <section>
-            <div class="icon" id="change">
-                <i v-on:click="select(1)" v-bind:class="{'select':flag==1}"></i>
-                <i v-on:click="select(2)" v-bind:class="{'select':flag==2}"></i>
-                <i v-on:click="select(3)" v-bind:class="{'select':flag==3}"></i>
-                <!--<i v-on:click="select(4);getNum(12)" v-bind:class="{'select':flag==4}"></i>-->
+
+
+        <div class="intro" style="display: none;">
+            <div class="head">
+                <h3 class="title">课程介绍</h3>
+                <span class="arrow fa fa-angle-double-up to-up"></span>
+                <span class="time">发布于：{{detaile[i].time}}</span>
             </div>
-        </section>
+            <div class="content">
+                <ul>
+                    <li>
+                        <dl>
+                            <dt>主持人：</dt>
+                            <dd>{{detaile[i].host}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>讨论医生：</dt>
+                            <dd>{{detaile[i].discuss}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>参加者：</dt>
+                            <dd>{{detaile[i].join}}</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>总结：</dt>
+                            <dd>{{detaile[i].summary}}</dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="case" v-for="(item,index) in detaile[i].case">
+                <span class="case-title">{{item.title}}</span>
+                <span class="time-range">{{item.position}}</span>
+                <p>{{item.situation}}</p>
+                <p>{{item.introduce}}</p>
+            </div>
+        </div>
     </main>
 </body>
-<script src="./js/jquery-1.8.3.js"></script>
+<script src="./js/jQuery-2.1.3.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 <!--JS引入rem布局-->
 <script src="./js/rem.js"></script>
 <script src="./js/vue/dist/vue.min.js"></script>
 <script src="./js/index.js"></script>
 <script src="./js/slide.js"></script>
+<script src="./js/details.js"></script>
+
+<script src="http://player.qiniucc.com/sdk/latest/qiniuplayer.min.js"></script>
+<!--<script src="./js/customjs.js"></script>-->
 </html>

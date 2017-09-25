@@ -22,7 +22,7 @@
 <body>
     <main id="app">
         <header>
-            <video id="demo-video" class="video_play video-js vjs-big-play-centered"></video>
+            <video id="demo-video" class="video-js vjs-big-play-centered"></video>
         </header>
         <div class="part"><!--用类part将列表和底部选择圈包裹，方便indexJS中淡入淡出-->
             <div class="content_0" id="page__bd" v-cloak>
@@ -39,7 +39,7 @@
                                         </a>
                                     </div>
                                     <a v-on:click="getDetail(index)">
-                                        <p class="text">{{item.page}}</p>
+                                        <p class="text"></p>
                                         <span class="arrow fa fa-angle-double-down"></span>
                                     </a>
                                 </div>
@@ -49,13 +49,15 @@
                         <ul>
                             <li v-for="(item,index) in content" v-bind:id="index" v-if="(item.No>=3)&(item.No<6)">
                                 <div class="box">
-                                    <h4>{{item.date}} {{item.title}}</h4>
-                                    <div class="img_show" v-on:click="playVedio(index)">
-                                        <img v-bind:src="item.img_src" alt="illness">
-                                        <div class="img_play"></div>
+                                    <h4>{{item.date}} </h4>
+                                    <div class="img_show" >
+                                        <img v-bind:src="item.img_src" alt="illness" >
+                                        <a v-bind:href="item.src" class="video">
+                                            <div class="img_play"></div>
+                                        </a>
                                     </div>
                                     <a v-on:click="getDetail(index)">
-                                        <p class="text">{{item.page}}</p>
+                                        <p class="text"></p>
                                         <span class="arrow fa fa-angle-double-down"></span>
                                     </a>
                                 </div>
@@ -66,12 +68,14 @@
                             <li v-for="(item,index) in content" v-bind:id="index" v-if="(item.No>=6)&(item.No<9)">
                                 <div class="box">
                                     <h4>{{item.date}} {{item.title}}</h4>
-                                    <div class="img_show" v-on:click="playVedio(index)">
-                                        <img v-bind:src="item.img_src" alt="illness">
-                                        <div class="img_play"></div>
+                                    <div class="img_show" >
+                                        <img v-bind:src="item.img_src" alt="illness" >
+                                        <a v-bind:href="item.src" class="video">
+                                            <div class="img_play"></div>
+                                        </a>
                                     </div>
                                     <a v-on:click="getDetail(index)">
-                                        <p class="text">{{item.page}}</p>
+                                        <p class="text"></p>
                                         <span class="arrow fa fa-angle-double-down"></span>
                                     </a>
                                 </div>
@@ -82,12 +86,14 @@
                             <li v-for="(item,index) in content" v-bind:id="index" v-if="(item.No>=9)&(item.No<12)">
                                 <div class="box">
                                     <h4>{{item.date}} {{item.title}}</h4>
-                                    <div class="img_show" v-on:click="playVedio(index)">
-                                        <img v-bind:src="item.img_src" alt="illness">
-                                        <div class="img_play"></div>
+                                    <div class="img_show" >
+                                        <img v-bind:src="item.img_src" alt="illness" >
+                                        <a v-bind:href="item.src" class="video">
+                                            <div class="img_play"></div>
+                                        </a>
                                     </div>
                                     <a v-on:click="getDetail(index)">
-                                        <p class="text">{{item.page}}</p>
+                                        <p class="text" ></p>
                                         <span class="arrow fa fa-angle-double-down"></span>
                                     </a>
                                 </div>
@@ -145,7 +151,7 @@
                 <span class="case-title">{{item.title}}</span>
                 <span class="time-range">{{item.position}}</span>
                 <p>{{item.situation}}</p>
-                <p>{{item.introduce}}</p>
+                <p v-html="item.introduce"></p>
             </div>
         </div>
     </main>

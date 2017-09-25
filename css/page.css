@@ -13,7 +13,7 @@ header {
     height: 3.3rem;
     max-width: 6rem;
     border-radius: 3px;
-    background: url("../img/poster.jpeg") no-repeat;
+    /*background: url("../img/poster.jpeg") no-repeat;*/
     background-size: 100% 145%;
 }
 #demo-video{
@@ -131,7 +131,7 @@ header {
 }
 /*简单描述区*/
 .box .text{
-    margin: 0.24rem 0 0.08rem 0.15rem;
+    margin: 0.10rem 0.13rem 0.08rem 0.15rem;
     width: 3.4rem;
     font-size:0.22rem;
     float: left;
@@ -198,6 +198,6 @@ section .icon i{
 }
 
 /*视频播放*/
-.video_play{
-    display: none!important;
-}
+/*.video_play{*/
+    /*display: none!important;*/
+/*}*/
